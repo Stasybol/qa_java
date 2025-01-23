@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class TestFeline {
+public class FelineTest {
 
     Feline feline = new Feline();
 
