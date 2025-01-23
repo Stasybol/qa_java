@@ -5,11 +5,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
-public class TestLionParam {
+public class LionParamTest {
     private final String sex;
     private final boolean hasMane;
 
-    public TestLionParam(String sex, boolean hasMane){
+    public LionParamTest(String sex, boolean hasMane){
         this.sex = sex;
         this.hasMane = hasMane;
     }
@@ -19,7 +19,6 @@ public class TestLionParam {
         return new Object[][]{
                 {"Самец", true},
                 {"Самка", false}
-//                {"Сам", false}
         };
     }
 
@@ -28,4 +27,5 @@ public class TestLionParam {
         Lion lion = new Lion(sex);
         Assert.assertEquals(lion.doesHaveMane(), hasMane);
     }
+
 }
