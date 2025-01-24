@@ -1,3 +1,4 @@
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,6 +7,7 @@ import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class LionParamTest {
+
     private final String sex;
     private final boolean hasMane;
 
@@ -14,7 +16,7 @@ public class LionParamTest {
         this.hasMane = hasMane;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Проверка пола: {0} {1}")
     public static Object[][] setData() {
         return new Object[][]{
                 {"Самец", true},
@@ -24,8 +26,9 @@ public class LionParamTest {
 
     @Test
     public void testSex() throws Exception {
-        Lion lion = new Lion(sex);
-        Assert.assertEquals(lion.doesHaveMane(), hasMane);
+        Feline feline = new Feline();
+        Lion lion = new Lion(feline, sex);
+        Assert.assertEquals("Пол льва неверный", lion.doesHaveMane(), hasMane);
     }
 
 }
