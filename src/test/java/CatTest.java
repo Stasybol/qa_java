@@ -19,7 +19,7 @@ public class CatTest {
     public void testSound(){
         Cat cat = new Cat(feline);
         String expectedSound = "Мяу";
-        Assert.assertEquals(expectedSound, cat.getSound());
+        Assert.assertEquals("Кот должен говорить мяу", expectedSound, cat.getSound());
     }
 
     @Test
@@ -28,7 +28,7 @@ public class CatTest {
         Mockito.when(feline.eatMeat()).thenReturn(expectedList);
 
         Cat cat = new Cat(feline);
-        Assert.assertEquals(expectedList, cat.getFood());
+        Assert.assertEquals("Список еды неправильный", expectedList, cat.getFood());
     }
 
 }
