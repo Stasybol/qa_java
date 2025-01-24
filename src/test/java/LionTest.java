@@ -16,12 +16,12 @@ public class LionTest {
     Feline feline;
 
     @Test
-    public void testKittens(){
+    public void testKittens() throws Exception {
         int expectedCount = 1;
         Mockito.when(feline.getKittens()).thenReturn(expectedCount);
 
-        Lion lion = new Lion(feline);
-        Assert.assertEquals(expectedCount, lion.getKittens());
+        Lion lion = new Lion(feline, "Самец");
+        Assert.assertEquals("Количество котят неверно", expectedCount, lion.getKittens());
     }
 
     @Test
@@ -29,13 +29,13 @@ public class LionTest {
         List<String> expectedList = List.of("Животные", "Птицы", "Рыба");
         Mockito.when(feline.getFood("Хищник")).thenReturn(expectedList);
 
-        Lion lion = new Lion(feline);
-        Assert.assertEquals(expectedList, lion.getFood());
+        Lion lion = new Lion(feline, "Самец");
+        Assert.assertEquals("Список еды неправильный", expectedList, lion.getFood());
     }
 
     @Test
     public void exceptionSex(){
-        Exception exception = Assert.assertThrows(Exception.class, () -> new Lion("Сам"));
+        Exception exception = Assert.assertThrows(Exception.class, () -> new Lion(feline, "Альфа-самец"));
         String expectedException = "Используйте допустимые значения пола животного - самец или самка";
         Assert.assertEquals(expectedException, exception.getMessage());
     }
